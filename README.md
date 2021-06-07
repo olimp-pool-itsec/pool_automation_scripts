@@ -10,7 +10,8 @@ This script should be run as root on every machine running cardano-node it check
 * sudo vurnability.
 * dmesg signiature version.
 
-
+![pool-check](https://olympus.rest/media/django-summernote/2021-06-07/0525d0b1-fc56-4db2-b85b-ff12cbfc4f28.png)
+ 
 
  Our blog post @ https://olympus.rest/blog/basic-node-seurity/ help to propper configure cardano-node host.
  
