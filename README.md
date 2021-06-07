@@ -1,6 +1,7 @@
 # pool_automation_scripts
 Collection of our Cardano stakepool scripts
 
+## pool-check.sh 
 This is a very simple script to basic check cardano-node host setup.
 
 This script should be run as root on every machine running cardano-node it checks for: 
