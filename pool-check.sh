@@ -20,7 +20,7 @@ DG="${C}[1;90m" #DarkGray
 NC="${C}[0m"
 UNDERLINED="${C}[5m"
 ITALIC="${C}[3m"
-SCORE=16
+SCORE=15
 #######
 if ! [ $(id -u) = 0 ]; then
 echo -e "${RED}You must be root to run this script.${NC}"
@@ -34,7 +34,7 @@ fi
 test_sudo=$(sudo -V | grep "Sudo ver" | grep "1\.[01234567]\.[0-9]\+\|1\.8\.1[0-9]\*\|1\.8\.2[01234567]")
 echo -ne "${WHITE}Checking sudo version is vurnable.. ${NC}"
 if [ -z "$test_sudo" ]
-   
+
 then
     echo 'OK'
 else
@@ -125,45 +125,19 @@ else
     echo -e "${RED}NOT OK${NC} ${LG}[${NC}${RED}!${NC}${LG}]${NC}"
     SCORE=$[SCORE-1]
 fi
-  
-#ipv6 
+
+#ipv6
 echo -ne "${BLUE}Checking if IPv6 is supported...${NC} "
 if grep -q 0 "/proc/sys/net/ipv6/conf/all/disable_ipv6" ; then
     echo -e "${RED}ipv6 enabled${NC} ${LG}[${NC}${RED}!${NC}${LG}]${NC}  | check our page for recipe" 
     SCORE=$[SCORE-1]
 else
-    echo -e "${GREEN}ipv6 disbled${NC}"  
+    echo -e "${GREEN}ipv6 disbled${NC}"
 fi
 
 
 
-#Fail2Ban
-echo -ne "${BLUE}Checking if fail2ban is installed...${NC} "
-test_fail2ban=$(which fail2ban)
-if [ -z "$test_fail2ban" ]
-then
-    echo -e "${RED}fail2ban not found${NC} ${LG}[${NC}${RED}!${NC}${LG}]${NC}  | check our page for recipe"
-    SCORE=$[SCORE-1]
-else
-    echo -e "${GREEN}OK${NC}"
-    f2b_status=true
-fi
-if [ "$f2b_status" = true ] ; then
-    echo -ne "${BLUE}Checking if Fail2ban is active...${NC} "
-    if [ $(sudo sh -c "fail2ban-client status | sed -n 's/,//g;s/.*Jail list://p' | xargs -n1 fail2ban-client status") = 'active' ];
-    then
-        echo -e "${GREEN}OK${NC}"
-    else
-        echo -e "${LG}[${NC}${RED}!${NC}${LG}]${NC} ${RED}NOT OK${NC} | check our page for recipe"
-        SCORE=$[SCORE-1]
-    fi
-    
-fi
- 
- 
-
-
-#firewall
+#Firewall
 echo -ne "${BLUE}Checking if UFW is installed...${NC} "
 test_ufw=$(which ufw)
 if [ -z "$test_ufw" ] ; then
@@ -183,7 +157,6 @@ if [ "$ufw_status" = true ] ; then
         echo -e "${LG}[${NC}${RED}!${NC}${LG}]${NC} ${RED}NOT OK${NC} | check our page for recipe"
         SCORE=$[SCORE-1]
     fi
-    
 fi
 
 
@@ -201,5 +174,5 @@ fi
 
 echo -e "Need help? Check our blog ${GREEN}->${NC} ${WHITE}https://olympus.rest/blog/basic-node-seurity/${NC}"
 awk -v i=$SCORE 'BEGIN { OFS="₳"; $i="₳"; print }'
-echo -e "${YELLOW}SCORE${NC} ${WHITE}[${NC}${RED}${SCORE}${NC}/${GREEN}16${NC}${WHITE}]${NC}"
+echo -e "${YELLOW}SCORE${NC} ${WHITE}[${NC}${GREEN}${SCORE}${NC}/${GREEN}15${NC}${WHITE}]${NC}"
 echo -e "${WHITE}things not cover${NC} check https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist"
