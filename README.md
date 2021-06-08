@@ -18,7 +18,7 @@ This script should be run as root on every machine running cardano-node it check
  
  
 ## pool-watcher.sh 
-This script launch tmux session with 4 separate panes and open ssh connection predefined  in .bashrc - 2 connection to BP for gLiveView and nload, and 1 connection to each of relays executing gLiveViewscript.
+This script launch tmux session with 4 separate panes and open ssh connection predefined  in .bashrc - 2 connection to BP for gLiveView and nload, and 1 connection to each of relays executing gLiveView.sh.
 
 ![pool-watcher](https://olympus.rest/media/django-summernote/2021-06-08/401e53f6-2820-42be-8e07-363ce99059b7.png)
 
