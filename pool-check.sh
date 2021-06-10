@@ -172,7 +172,7 @@ fi
 
 
 
-echo -e "Need help? Check our blog ${GREEN}->${NC} ${WHITE}https://olympus.rest/blog/basic-node-seurity/${NC}"
+echo -e "Need help? Check our blog ${GREEN}->${NC} ${WHITE}https://olympus.rest/blog/basic-node-security/${NC}"
 awk -v i=$SCORE 'BEGIN { OFS="₳"; $i="₳"; print }'
 echo -e "${YELLOW}SCORE${NC} ${WHITE}[${NC}${GREEN}${SCORE}${NC}/${GREEN}15${NC}${WHITE}]${NC}"
 echo -e "${WHITE}things not cover${NC} check https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist"
